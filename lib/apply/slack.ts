@@ -68,7 +68,8 @@ async function slackApi(
   });
   if (!response.ok) throw new Error("slack_http_error");
   const result = (await response.json()) as SlackResponse;
-  if (!result.ok) throw new Error("slack_api_error");
+  if (!result.ok)
+    throw new Error(`slack_api_error:${method}:${result.error ?? "unknown"}`);
   return result;
 }
 
@@ -110,8 +111,9 @@ export async function sendApplicationToSlack(
   const upload = await slackApi(
     "files.getUploadURLExternal",
     token,
-    JSON.stringify({ filename, length: file.size }),
-    { "Content-Type": "application/json; charset=utf-8" },
+    // This method accepts form-encoded arguments only, not JSON.
+    new URLSearchParams({ filename, length: String(file.size) }),
+    undefined,
     timeout,
   );
   if (!upload.upload_url || !upload.file_id)
@@ -126,12 +128,12 @@ export async function sendApplicationToSlack(
   await slackApi(
     "files.completeUploadExternal",
     token,
-    JSON.stringify({
-      files: [{ id: upload.file_id, title: filename }],
+    new URLSearchParams({
+      files: JSON.stringify([{ id: upload.file_id, title: filename }]),
       channel_id: channel,
       initial_comment: text,
     }),
-    { "Content-Type": "application/json; charset=utf-8" },
+    undefined,
     timeout,
   );
 }

@@ -149,9 +149,10 @@ export async function POST(request: Request) {
   try {
     await sendApplicationToSlack(fields, file);
   } catch (error) {
+    // Slack error codes (e.g. not_in_channel) carry no candidate data.
     const code =
-      error instanceof Error && error.message === "slack_not_configured"
-        ? "slack_not_configured"
+      error instanceof Error && /^slack_[\w.:-]+$/.test(error.message)
+        ? error.message
         : "slack_delivery_failed";
     console.error(`apply failed: ${code}`);
     return json({ ok: false, error: "server" }, 502);
