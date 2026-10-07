@@ -27,6 +27,12 @@ export const VACANCY = {
   },
   employer: "KOLSS Polska Sp. z o.o.",
   registry: "KRS 0001207180 · NIP 536-199-62-94 · REGON 543320017",
+  shareCapital: "5\u00a0000\u00a0zł",
+  contact: {
+    email: "biuro@kolss.eu",
+    phone: "+48 510 700 913",
+    phoneHref: "tel:+48510700913",
+  },
   cvMaxSizeMb: 4,
   commentMaxLength: 1000,
 } as const;

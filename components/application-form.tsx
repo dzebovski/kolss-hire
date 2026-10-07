@@ -148,9 +148,12 @@ export function ApplicationForm({
       const body = await response.json();
       if (!body.ok) throw new Error("application_failed");
       const eventId = typeof body.eventId === "string" ? body.eventId : "";
-      try {
-        sessionStorage.setItem("kh_eid", eventId);
-      } catch {}
+      // Only needed to deduplicate the browser event, so it follows consent.
+      if (consent === "granted") {
+        try {
+          sessionStorage.setItem("kh_eid", eventId);
+        } catch {}
+      }
       router.push(
         `/${lang}/thank-you${eventId ? `?eid=${encodeURIComponent(eventId)}` : ""}`,
       );

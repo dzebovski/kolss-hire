@@ -1,4 +1,5 @@
 import { VACANCY } from "../../vacancy";
+import privacy from "../legal/pl";
 import type { Dictionary } from "../types";
 
 const salary = `${VACANCY.salary.amount} ${VACANCY.salary.currency}`;
@@ -110,7 +111,7 @@ const pl = {
     commentPlaceholder: "Kilka zdań o Twoim doświadczeniu w pracy z klientami",
     submit: "Wyślij zgłoszenie",
     sending: "Wysyłanie…",
-    rodo: "[HR: KLAUZULA INFORMACYJNA RODO]",
+    rodo: "Administratorem danych jest KOLSS Polska Sp. z o.o. Przetwarzamy je wyłącznie w celu tej rekrutacji i usuwamy po jej zakończeniu. Wysyłając zgłoszenie, zgadzasz się na przetwarzanie danych podanych dobrowolnie, np. w CV — zgodę możesz wycofać w każdej chwili.",
     privacyLink: "Pełna informacja o przetwarzaniu danych",
     errors: {
       summary:
@@ -137,18 +138,26 @@ const pl = {
     text: "Używamy niezbędnych plików cookie, aby strona działała. Za Twoją zgodą korzystamy też z Meta Pixel, aby mierzyć skuteczność naszych ogłoszeń.",
     accept: "Akceptuję",
     reject: "Odrzucam",
+    customize: "Ustawienia",
     privacy: "Polityka prywatności",
     settings: "Ustawienia cookies",
+    settingsLead: "Wybierz, na które pliki cookie się zgadzasz. Wybór możesz zmienić w każdej chwili w stopce strony.",
+    necessaryTitle: "Niezbędne",
+    necessaryText: "Zapamiętują Twój wybór i chronią formularz przed botami. Nie można ich wyłączyć.",
+    alwaysOn: "Zawsze aktywne",
+    marketingTitle: "Marketingowe",
+    marketingText: "Meta Pixel i Conversions API — pomiar skuteczności naszych ogłoszeń o pracę. Bez zgody nic nie wysyłamy do Meta.",
+    save: "Zapisz wybór",
+    acceptAll: "Akceptuj wszystkie",
+    close: "Zamknij",
   },
   footer: {
     company: `${VACANCY.employer}, ${VACANCY.address} · ${VACANCY.registry}`,
     privacy: "Polityka prywatności",
     cookies: "Ustawienia cookies",
+    contact: "Kontakt",
   },
-  privacy: {
-    title: "Polityka prywatności",
-    text: "[HR: PEŁNY TEKST INFORMACJI O PRZETWARZANIU DANYCH KANDYDATÓW]",
-  },
+  privacy,
 } satisfies Dictionary;
 
 export default pl;

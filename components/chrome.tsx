@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { LanguageSwitcher } from "./language-switcher";
 import { CookieSettingsButton } from "./consent";
 import type { Locale } from "@/lib/i18n/locales";
+import { VACANCY } from "@/lib/vacancy";
 import type { Dictionary } from "@/lib/i18n/dictionaries/uk";
 export function Header({ lang }: { lang: Locale }) {
   return (
@@ -43,14 +44,24 @@ export function Footer({
     <footer className="k-wrap">
       <div className="k-rule" />
       <div className="k-footer">
-        <p lang="pl" className="k-small company">
-          KOLSS Polska Sp. z o.o., ul. Zegrzyńska 6, 05-119 Legionowo,
-          <br />
-          KRS 0001207180, NIP 536-199-62-94, REGON 543320017,
-          <br />
-          Sąd Rejonowy dla m.st. Warszawy w Warszawie, XIV Wydział Gospodarczy
-          KRS
-        </p>
+        <div className="k-small company">
+          <p lang="pl">
+            {VACANCY.employer}, {VACANCY.address},
+            <br />
+            KRS 0001207180, NIP 536-199-62-94, REGON 543320017,
+            <br />
+            Sąd Rejonowy dla m.st. Warszawy w Warszawie, XIV Wydział Gospodarczy
+            KRS, kapitał zakładowy {VACANCY.shareCapital}
+          </p>
+          <p>
+            {text.contact}:{" "}
+            <a href={`mailto:${VACANCY.contact.email}`}>
+              {VACANCY.contact.email}
+            </a>
+            {" · "}
+            <a href={VACANCY.contact.phoneHref}>{VACANCY.contact.phone}</a>
+          </p>
+        </div>
         <nav className="k-footlinks k-small" aria-label="Footer">
           <a href={`/${lang}/privacy`}>{text.privacy}</a>
           <CookieSettingsButton>{text.cookies}</CookieSettingsButton>

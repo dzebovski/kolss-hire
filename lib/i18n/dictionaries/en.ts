@@ -1,4 +1,5 @@
 import { VACANCY } from "../../vacancy";
+import privacy from "../legal/en";
 import type { Dictionary } from "../types";
 
 const workAddress = `KOLSS showroom, ${VACANCY.shortAddress}`;
@@ -106,7 +107,7 @@ const en = {
     commentPlaceholder: "A few sentences about your client-facing experience",
     submit: "Send application",
     sending: "Sending…",
-    rodo: "[HR: DATA PROCESSING NOTICE]",
+    rodo: "KOLSS Polska Sp. z o.o. is the controller of your data. We process it only for this recruitment and delete it once the recruitment ends. By submitting, you consent to the processing of data you provide voluntarily, e.g. in your CV — you can withdraw consent at any time.",
     privacyLink: "Full information on data processing",
     errors: {
       summary:
@@ -133,18 +134,26 @@ const en = {
     text: "We use essential cookies to make this site work. With your consent, we also use Meta Pixel to measure how our ads perform.",
     accept: "Accept",
     reject: "Reject",
+    customize: "Settings",
     privacy: "Privacy policy",
     settings: "Cookie settings",
+    settingsLead: "Choose which cookies you agree to. You can change your choice at any time in the page footer.",
+    necessaryTitle: "Essential",
+    necessaryText: "Remember your choice and protect the form from bots. They cannot be switched off.",
+    alwaysOn: "Always on",
+    marketingTitle: "Marketing",
+    marketingText: "Meta Pixel and Conversions API — measuring how our job ads perform. Without consent, we send nothing to Meta.",
+    save: "Save choice",
+    acceptAll: "Accept all",
+    close: "Close",
   },
   footer: {
     company: `${VACANCY.employer}, ${VACANCY.address} · ${VACANCY.registry}`,
     privacy: "Privacy policy",
     cookies: "Cookie settings",
+    contact: "Contact",
   },
-  privacy: {
-    title: "Privacy policy",
-    text: "[HR: FULL CANDIDATE DATA PROCESSING NOTICE]",
-  },
+  privacy,
 } satisfies Dictionary;
 
 export default en;

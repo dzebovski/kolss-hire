@@ -1,6 +1,11 @@
 "use client";
 
-export type ConsentValue = "granted" | "denied" | null;
+import {
+  consentFromCookie,
+  captureConsentedFbclid,
+  type ConsentValue,
+} from "./consent";
+export type { ConsentValue } from "./consent";
 
 declare global {
   interface Window {
@@ -17,10 +22,7 @@ const FBCLID_KEY = "kh_fbclid";
 
 export function readConsentCookie(): ConsentValue {
   if (typeof document === "undefined") return null;
-  const value = document.cookie.match(
-    /(?:^|;\s*)kh_consent=(granted|denied)(?:;|$)/,
-  )?.[1];
-  return value === "granted" || value === "denied" ? value : null;
+  return consentFromCookie(document.cookie);
 }
 
 export function saveConsentCookie(value: Exclude<ConsentValue, null>): void {
@@ -28,14 +30,16 @@ export function saveConsentCookie(value: Exclude<ConsentValue, null>): void {
 }
 
 export function captureFbclid(): void {
-  if (typeof window === "undefined") return;
-  const fbclid = new URLSearchParams(window.location.search).get("fbclid");
-  if (fbclid) {
-    try {
-      window.sessionStorage.setItem(FBCLID_KEY, fbclid);
-    } catch {
-      // Tracking remains optional when browser storage is unavailable.
-    }
+  if (typeof window === "undefined" || readConsentCookie() !== "granted")
+    return;
+  try {
+    captureConsentedFbclid(
+      document.cookie,
+      window.location.search,
+      (key, value) => window.sessionStorage.setItem(key, value),
+    );
+  } catch {
+    // Tracking remains optional when browser storage is unavailable.
   }
 }
 
@@ -99,6 +103,17 @@ export function revokePixelConsent(): void {
   if (typeof window !== "undefined" && window.fbq)
     window.fbq("consent", "revoke");
   if (typeof document === "undefined") return;
+  try {
+    for (const key of [
+      FBCLID_KEY,
+      START_APPLICATION_KEY,
+      "kh_eid",
+      "kh_eid_sent",
+    ])
+      window.sessionStorage.removeItem(key);
+  } catch {
+    // Storage may be unavailable; optional tracking still stays revoked.
+  }
 
   const host = window.location.hostname;
   const domains = [

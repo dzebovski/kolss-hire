@@ -1,4 +1,5 @@
 import { VACANCY } from "../../vacancy";
+import privacy from "../legal/uk";
 
 const salary = `${VACANCY.salary.amount} ${VACANCY.salary.currency}`;
 const workAddress = `Шоурум KOLSS, ${VACANCY.shortAddress}`;
@@ -106,7 +107,7 @@ const uk = {
     commentPlaceholder: "Кілька речень про ваш досвід роботи з клієнтами",
     submit: "Надіслати заявку",
     sending: "Надсилаємо…",
-    rodo: "[HR: ІНФОРМАЦІЯ ПРО ОБРОБКУ ДАНИХ]",
+    rodo: "Адміністратор даних — KOLSS Polska Sp. z o.o. Ми обробляємо їх лише для цієї рекрутації й видаляємо після її завершення. Надсилаючи заявку, ви погоджуєтеся на обробку даних, наданих добровільно, наприклад у CV, — згоду можна відкликати будь-коли.",
     privacyLink: "Повна інформація про обробку даних",
     errors: {
       summary:
@@ -133,18 +134,26 @@ const uk = {
     text: "Ми використовуємо необхідні cookie, щоб сайт працював. За вашою згодою — також Meta Pixel, щоб вимірювати ефективність наших оголошень.",
     accept: "Прийняти",
     reject: "Відхилити",
+    customize: "Налаштування",
     privacy: "Політика приватності",
     settings: "Налаштування cookie",
+    settingsLead: "Оберіть, на які файли cookie ви погоджуєтеся. Змінити вибір можна будь-коли у футері сторінки.",
+    necessaryTitle: "Необхідні",
+    necessaryText: "Запам’ятовують ваш вибір і захищають форму від ботів. Вимкнути їх не можна.",
+    alwaysOn: "Завжди активні",
+    marketingTitle: "Маркетингові",
+    marketingText: "Meta Pixel і Conversions API — вимірювання ефективності наших оголошень про роботу. Без згоди ми нічого не надсилаємо до Meta.",
+    save: "Зберегти вибір",
+    acceptAll: "Прийняти всі",
+    close: "Закрити",
   },
   footer: {
     company: `${VACANCY.employer}, ${VACANCY.address} · ${VACANCY.registry}`,
     privacy: "Політика приватності",
     cookies: "Налаштування cookie",
+    contact: "Контакт",
   },
-  privacy: {
-    title: "Політика приватності",
-    text: "[HR: ПОВНИЙ ТЕКСТ ІНФОРМАЦІЇ ПРО ОБРОБКУ ДАНИХ КАНДИДАТІВ]",
-  },
+  privacy,
 };
 
 export default uk;
