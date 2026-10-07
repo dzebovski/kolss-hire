@@ -28,6 +28,7 @@ export const applicationSchema = z
       )
       .optional(),
     comment: z.string().max(1000),
+    rodoConsent: z.literal("yes"),
     vacancy: z.literal("sales-consultant-legionowo"),
     lang: z.enum(["pl", "uk", "en"]),
     utm_source: z.string().max(200),

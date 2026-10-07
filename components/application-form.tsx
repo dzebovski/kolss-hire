@@ -172,6 +172,7 @@ export function ApplicationForm({
     cvFile: "CV",
     cvUrl: text.cvUrl,
     comment: text.comment,
+    rodoConsent: text.rodoConsentShort,
   };
   return (
     <form
@@ -293,6 +294,21 @@ export function ApplicationForm({
           <input id="website" name="website" tabIndex={-1} autoComplete="off" />
         </div>
       </fieldset>
+      <div className="consent-field">
+        <div className="consent-check">
+          <input
+            id="f-rodoConsent"
+            name="rodoConsent"
+            type="checkbox"
+            value="yes"
+            aria-invalid={Boolean(errors.rodoConsent)}
+            aria-describedby={described("rodoConsent")}
+            onChange={() => validateBlur("rodoConsent")}
+          />
+          <label htmlFor="f-rodoConsent">{text.rodoConsent}</label>
+        </div>
+        {error("rodoConsent")}
+      </div>
       {(Object.values(errors).some(Boolean) || serverError) && (
         <div className="error-summary" ref={summary} tabIndex={-1} role="alert">
           <p>{serverError ? message(serverError) : text.errors.summary}</p>

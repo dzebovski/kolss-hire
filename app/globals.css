@@ -574,6 +574,34 @@ p {
   min-height: 44px;
   font-size: 14px;
 }
+.consent-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.consent-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.consent-check input {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  accent-color: #1e2421;
+  cursor: pointer;
+}
+.consent-check input[aria-invalid="true"] {
+  outline: 2px solid #9a3b2a;
+  outline-offset: 2px;
+}
+.consent-check label {
+  font-size: 14px;
+  line-height: 22px;
+  color: #1e2421;
+  cursor: pointer;
+}
 .field-error {
   font-size: 14px;
   line-height: 20px;

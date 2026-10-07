@@ -52,7 +52,7 @@ const privacy: PrivacyContent = {
         {
           list: [
             "Recruitment for the showroom sales consultant role — Art. 6(1)(b) GDPR (steps taken at your request before entering into a contract) in conjunction with Art. 22¹ of the Polish Labour Code.",
-            "Data you provide on your own initiative, e.g. in your CV or comment — your consent, Art. 6(1)(a) GDPR in conjunction with Art. 22¹a of the Labour Code. By submitting an application containing such data, you consent to its processing in this recruitment.",
+            "Data you provide on your own initiative, e.g. in your CV or comment — your consent, Art. 6(1)(a) GDPR in conjunction with Art. 22¹a of the Labour Code. You give consent by ticking the consent box in the form; the application cannot be sent without it.",
             "Protecting the form against spam and abuse, and identifying where an application came from — our legitimate interest, Art. 6(1)(f) GDPR.",
             "Measuring the performance of our Meta ads — only with your consent, Art. 6(1)(a) GDPR and Art. 399 of the Polish Electronic Communications Law.",
           ],

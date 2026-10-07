@@ -15,6 +15,7 @@ const validFields: ApplicationFields = {
   email: "anna@example.com",
   cvUrl: "",
   comment: "",
+  rodoConsent: "yes",
   vacancy: "sales-consultant-legionowo",
   lang: "pl",
   utm_source: "",
@@ -55,6 +56,16 @@ describe("application schema", () => {
         cvUrl: "",
       }).success,
     ).toBe(true);
+  });
+
+  it("requires the RODO consent checkbox", () => {
+    const withLink = { ...validFields, cvUrl: "https://example.com/cv.pdf" };
+    expect(applicationSchema.safeParse(withLink).success).toBe(true);
+    for (const rodoConsent of ["", "no", undefined])
+      expect(
+        applicationSchema.safeParse({ ...withLink, rodoConsent }).success,
+      ).toBe(false);
+    expect(buildSlackApplication(withLink)).toContain("*Згода RODO:* так");
   });
 
   it("rejects invalid contacts and enforces the agreed 4 MB CV boundary", () => {

@@ -84,6 +84,7 @@ export async function POST(request: Request) {
       "email",
       "cvUrl",
       "comment",
+      "rodoConsent",
       "vacancy",
       "lang",
       "utm_source",

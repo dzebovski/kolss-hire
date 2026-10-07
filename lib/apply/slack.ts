@@ -39,6 +39,7 @@ export function buildSlackApplication(
     `*Email:* <mailto:${encodeURIComponent(fields.email)}|${escapeMrkdwn(fields.email)}>`,
     `*CV:* ${cv}`,
     `*Коментар:* ${escapeMrkdwn(fields.comment) || "—"}`,
+    "*Згода RODO:* так — позначена кандидатом у формі під час надсилання",
     `*Мова сторінки:* ${fields.lang} · *Джерело:* ${escapeMrkdwn(source)}${fields.fbclid ? " · клік з Meta" : ""}`,
     `*Отримано:* ${received} (Warsaw)`,
   ].join("\n");
