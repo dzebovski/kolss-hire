@@ -65,7 +65,7 @@ describe("application schema", () => {
       expect(
         applicationSchema.safeParse({ ...withLink, rodoConsent }).success,
       ).toBe(false);
-    expect(buildSlackApplication(withLink)).toContain("*Згода RODO:* так");
+    expect(buildSlackApplication(withLink)).toContain("*RODO consent:* yes");
   });
 
   it("rejects invalid contacts and enforces the agreed 4 MB CV boundary", () => {

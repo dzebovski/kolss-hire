@@ -14,8 +14,8 @@ export function buildSlackApplication(
 ): string {
   const cv =
     [
-      filename ? "📎 файл у цьому повідомленні" : "",
-      fields.cvUrl ? `посилання: ${escapeMrkdwn(fields.cvUrl)}` : "",
+      filename ? "📎 file attached to this message" : "",
+      fields.cvUrl ? `link: ${escapeMrkdwn(fields.cvUrl)}` : "",
     ]
       .filter(Boolean)
       .join(" | ") || "—";
@@ -23,7 +23,7 @@ export function buildSlackApplication(
     [fields.utm_source, fields.utm_campaign, fields.utm_content]
       .filter(Boolean)
       .join(" / ") || "—";
-  const received = new Intl.DateTimeFormat("uk-UA", {
+  const received = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Europe/Warsaw",
     day: "2-digit",
     month: "2-digit",
@@ -33,15 +33,15 @@ export function buildSlackApplication(
     hour12: false,
   }).format(new Date());
   return [
-    "*Нова заявка · Doradca / Doradczyni klienta — Legionowo*",
-    `*Ім’я:* ${escapeMrkdwn(fields.name)}`,
-    `*Телефон:* <tel:${fields.phone.replace(/[^\d+]/g, "")}|${escapeMrkdwn(fields.phone)}>`,
+    "*New application · Doradca / Doradczyni klienta — Legionowo*",
+    `*Name:* ${escapeMrkdwn(fields.name)}`,
+    `*Phone:* <tel:${fields.phone.replace(/[^\d+]/g, "")}|${escapeMrkdwn(fields.phone)}>`,
     `*Email:* <mailto:${encodeURIComponent(fields.email)}|${escapeMrkdwn(fields.email)}>`,
     `*CV:* ${cv}`,
-    `*Коментар:* ${escapeMrkdwn(fields.comment) || "—"}`,
-    "*Згода RODO:* так — позначена кандидатом у формі під час надсилання",
-    `*Мова сторінки:* ${fields.lang} · *Джерело:* ${escapeMrkdwn(source)}${fields.fbclid ? " · клік з Meta" : ""}`,
-    `*Отримано:* ${received} (Warsaw)`,
+    `*Comment:* ${escapeMrkdwn(fields.comment) || "—"}`,
+    "*RODO consent:* yes — ticked by the candidate in the form on submission",
+    `*Page language:* ${fields.lang} · *Source:* ${escapeMrkdwn(source)}${fields.fbclid ? " · Meta ad click" : ""}`,
+    `*Received:* ${received} (Warsaw)`,
   ].join("\n");
 }
 
