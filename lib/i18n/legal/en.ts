@@ -42,7 +42,7 @@ const privacy: PrivacyContent = {
           ],
         },
         "Automatically when you submit the form: the language version of the page, how you reached us (UTM campaign parameters and whether you clicked a Meta ad), your IP address and browser data — to the extent needed to run and protect the form.",
-        "Providing your name, phone, email and CV is voluntary, but we cannot consider your application without them. Please do not include a photo or special category data, such as health or religion, in your CV — we do not need them. We do not ask about your current or previous pay.",
+        "Providing your name, phone, email and CV is voluntary, but we cannot consider your application without them. Please do not include a photo or special category data, such as health or religion, in your CV — we do not need them. If you send them anyway, we will not use them and will delete them. We do not ask about your current or previous pay.",
       ],
     },
     {
@@ -64,15 +64,15 @@ const privacy: PrivacyContent = {
       id: "odbiorcy",
       title: "Who receives your data",
       blocks: [
-        "Applications are seen only by authorised KOLSS staff running the recruitment. We also use providers that process data on our behalf:",
+        "Applications are seen only by authorised KOLSS staff running the recruitment. We also use providers that process data on our behalf and on our instructions:",
         {
           list: [
-            "Vercel Inc. (USA) — website hosting, form handling and bot protection;",
-            "Slack Technologies, LLC (USA, Salesforce group) — the messaging tool where the recruitment team receives applications and CV files;",
-            "Meta Platforms Ireland Ltd (Ireland) — only if you accept marketing cookies, see “Meta Pixel and Conversions API”.",
+            "Vercel Inc. (USA) — website hosting, form handling (server in Frankfurt, EU) and bot protection;",
+            "Slack Technologies, LLC (USA, Salesforce group) — the messaging tool where the recruitment team receives applications and CV files.",
           ],
         },
-        "We do not sell data or share CVs with other companies.",
+        "A separate recipient is Meta Platforms Ireland Ltd (Ireland), only if you accept marketing cookies. Meta does not act on our instructions but as a joint and separate controller, see “Meta Pixel and Conversions API”.",
+        "We do not sell data or share CVs with other companies for their own purposes.",
       ],
     },
     {
@@ -123,7 +123,7 @@ const privacy: PrivacyContent = {
             "withdraw consent at any time.",
           ],
         },
-        `To exercise your rights, write to ${email}. We will reply within one month.`,
+        `To exercise your rights, write to ${email}. We will reply within one month. In particularly complex cases this may be extended by two further months — we will then tell you and explain why.`,
         "You can also lodge a complaint with the President of the Polish Personal Data Protection Office (Prezes UODO), ul. Stawki 2, 00-193 Warszawa (uodo.gov.pl).",
         "We do not make recruitment decisions automatically or profile candidates. Decisions are always made by people.",
       ],

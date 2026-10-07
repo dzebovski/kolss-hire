@@ -40,7 +40,7 @@ const privacy: PrivacyContent = {
           ],
         },
         "Automatycznie przy wysłaniu formularza: wersję językową strony, źródło wejścia (parametry kampanii UTM i informację o kliknięciu reklamy Meta), adres IP i dane przeglądarki — w zakresie potrzebnym do obsługi i zabezpieczenia formularza.",
-        "Podanie imienia, telefonu, e-maila i CV jest dobrowolne, ale bez nich nie rozpatrzymy zgłoszenia. Nie umieszczaj w CV zdjęcia ani danych szczególnych kategorii, np. o zdrowiu czy wyznaniu — nie są nam potrzebne. Nie pytamy o Twoje obecne ani wcześniejsze wynagrodzenie.",
+        "Podanie imienia, telefonu, e-maila i CV jest dobrowolne, ale bez nich nie rozpatrzymy zgłoszenia. Nie umieszczaj w CV zdjęcia ani danych szczególnych kategorii, np. o zdrowiu czy wyznaniu — nie są nam potrzebne. Jeśli mimo to je prześlesz, nie będziemy ich wykorzystywać i usuniemy je. Nie pytamy o Twoje obecne ani wcześniejsze wynagrodzenie.",
       ],
     },
     {
@@ -62,15 +62,15 @@ const privacy: PrivacyContent = {
       id: "odbiorcy",
       title: "Komu przekazujemy dane",
       blocks: [
-        "Zgłoszenia widzą wyłącznie upoważnione osoby z KOLSS, które prowadzą rekrutację. Korzystamy też z dostawców, którzy przetwarzają dane na nasze zlecenie:",
+        "Zgłoszenia widzą wyłącznie upoważnione osoby z KOLSS, które prowadzą rekrutację. Korzystamy też z dostawców, którzy przetwarzają dane w naszym imieniu i na nasze polecenie:",
         {
           list: [
-            "Vercel Inc. (USA) — hosting strony, obsługa formularza i ochrona przed botami;",
-            "Slack Technologies, LLC (USA, grupa Salesforce) — komunikator, w którym zespół rekrutacyjny otrzymuje zgłoszenia i pliki CV;",
-            "Meta Platforms Ireland Ltd (Irlandia) — tylko jeśli zgodzisz się na cookies marketingowe, zob. punkt „Meta Pixel i Conversions API”.",
+            "Vercel Inc. (USA) — hosting strony, obsługa formularza (serwer we Frankfurcie, UE) i ochrona przed botami;",
+            "Slack Technologies, LLC (USA, grupa Salesforce) — komunikator, w którym zespół rekrutacyjny otrzymuje zgłoszenia i pliki CV.",
           ],
         },
-        "Nie sprzedajemy danych i nie przekazujemy CV innym firmom.",
+        "Odrębnym odbiorcą jest Meta Platforms Ireland Ltd (Irlandia) — tylko jeśli zgodzisz się na cookies marketingowe. Meta nie działa na nasze polecenie, lecz jako współadministrator i odrębny administrator, zob. punkt „Meta Pixel i Conversions API”.",
+        "Nie sprzedajemy danych i nie udostępniamy CV innym firmom do ich własnych celów.",
       ],
     },
     {
@@ -121,7 +121,7 @@ const privacy: PrivacyContent = {
             "wycofania zgody w każdej chwili.",
           ],
         },
-        `Aby skorzystać z praw, napisz na ${email}. Odpowiemy w ciągu miesiąca.`,
+        `Aby skorzystać z praw, napisz na ${email}. Odpowiemy w ciągu miesiąca. W szczególnie złożonych sprawach termin może zostać przedłużony o kolejne dwa miesiące — wtedy poinformujemy Cię o tym i podamy przyczynę.`,
         "Możesz też wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warszawa (uodo.gov.pl).",
         "Nie podejmujemy decyzji rekrutacyjnych automatycznie i nie profilujemy kandydatów. Decyzję zawsze podejmują ludzie.",
       ],
