@@ -5,6 +5,7 @@ import type { Dictionary } from "../types";
 const workAddress = `KOLSS showroom, ${VACANCY.shortAddress}`;
 
 const en = {
+  header: { home: "KOLSS — back to the job offer" },
   metadata: {
     title: "Furniture Sales Consultant — KOLSS Legionowo",
     description: `Work at the KOLSS showroom in Legionowo: client calls, showroom meetings and leading sales to a signed contract. ${VACANCY.salary.en} gross + bonuses.`,
@@ -137,12 +138,15 @@ const en = {
     customize: "Settings",
     privacy: "Privacy policy",
     settings: "Cookie settings",
-    settingsLead: "Choose which cookies you agree to. You can change your choice at any time in the page footer.",
+    settingsLead:
+      "Choose which cookies you agree to. You can change your choice at any time in the page footer.",
     necessaryTitle: "Essential",
-    necessaryText: "Remember your choice and protect the form from bots. They cannot be switched off.",
+    necessaryText:
+      "Remember your choice and protect the form from bots. They cannot be switched off.",
     alwaysOn: "Always on",
     marketingTitle: "Marketing",
-    marketingText: "Meta Pixel and Conversions API — measuring how our job ads perform. Without consent, we send nothing to Meta.",
+    marketingText:
+      "Meta Pixel and Conversions API — measuring how our job ads perform. Without consent, we send nothing to Meta.",
     save: "Save choice",
     acceptAll: "Accept all",
     close: "Close",

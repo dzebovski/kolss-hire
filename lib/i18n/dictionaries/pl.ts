@@ -6,6 +6,7 @@ const salary = `${VACANCY.salary.amount} ${VACANCY.salary.currency}`;
 const workAddress = `Salon KOLSS, ${VACANCY.shortAddress}`;
 
 const pl = {
+  header: { home: "KOLSS — strona główna oferty" },
   metadata: {
     title: "Doradca / Doradczyni klienta w salonie meblowym — KOLSS Legionowo",
     description: `Praca w salonie KOLSS w Legionowie: rozmowy z klientami, spotkania w salonie i prowadzenie sprzedaży do umowy. ${salary} brutto + premie.`,
@@ -141,12 +142,15 @@ const pl = {
     customize: "Ustawienia",
     privacy: "Polityka prywatności",
     settings: "Ustawienia cookies",
-    settingsLead: "Wybierz, na które pliki cookie się zgadzasz. Wybór możesz zmienić w każdej chwili w stopce strony.",
+    settingsLead:
+      "Wybierz, na które pliki cookie się zgadzasz. Wybór możesz zmienić w każdej chwili w stopce strony.",
     necessaryTitle: "Niezbędne",
-    necessaryText: "Zapamiętują Twój wybór i chronią formularz przed botami. Nie można ich wyłączyć.",
+    necessaryText:
+      "Zapamiętują Twój wybór i chronią formularz przed botami. Nie można ich wyłączyć.",
     alwaysOn: "Zawsze aktywne",
     marketingTitle: "Marketingowe",
-    marketingText: "Meta Pixel i Conversions API — pomiar skuteczności naszych ogłoszeń o pracę. Bez zgody nic nie wysyłamy do Meta.",
+    marketingText:
+      "Meta Pixel i Conversions API — pomiar skuteczności naszych ogłoszeń o pracę. Bez zgody nic nie wysyłamy do Meta.",
     save: "Zapisz wybór",
     acceptAll: "Akceptuj wszystkie",
     close: "Zamknij",

@@ -1,5 +1,6 @@
 "use client";
 import { usePathname, useSearchParams } from "next/navigation";
+import { localizedHref } from "@/lib/i18n/routes";
 import { locales, type Locale } from "@/lib/i18n/locales";
 export function LanguageSwitcher({ lang }: { lang: Locale }) {
   const pathname = usePathname();
@@ -11,7 +12,7 @@ export function LanguageSwitcher({ lang }: { lang: Locale }) {
         <span className="lang-item" key={locale}>
           {i > 0 && <span aria-hidden="true">·</span>}
           <a
-            href={`/${locale}${suffix}${query ? `?${query}` : ""}`}
+            href={localizedHref(locale, suffix, query)}
             hrefLang={locale}
             lang={locale}
             aria-current={lang === locale ? "page" : undefined}

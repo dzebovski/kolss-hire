@@ -1,31 +1,43 @@
 import Image from "next/image";
 import { Suspense } from "react";
+import { HomeLink } from "./home-link";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { LanguageSwitcher } from "./language-switcher";
 import { CookieSettingsButton } from "./consent";
 import type { Locale } from "@/lib/i18n/locales";
 import { VACANCY } from "@/lib/vacancy";
 import type { Dictionary } from "@/lib/i18n/dictionaries/uk";
-export function Header({ lang }: { lang: Locale }) {
+export async function Header({ lang }: { lang: Locale }) {
+  const d = await getDictionary();
+  const logo = (
+    <Image
+      className="k-logo"
+      src="/brand/kolss-logo-dark.svg"
+      alt="KOLSS"
+      width={158}
+      height={24}
+      style={{ width: "auto" }}
+      priority
+    />
+  );
   return (
     <div className="k-wrap">
       <header className="k-header">
-        <a
-          className="logo-link"
-          href="https://kolss.eu"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="KOLSS — kolss.eu"
+        <Suspense
+          fallback={
+            <a
+              className="logo-link"
+              href={`/${lang}`}
+              aria-label={d.header.home}
+            >
+              {logo}
+            </a>
+          }
         >
-          <Image
-            className="k-logo"
-            src="/brand/kolss-logo-dark.svg"
-            alt="KOLSS"
-            width={158}
-            height={24}
-            style={{ width: "auto" }}
-            priority
-          />
-        </a>
+          <HomeLink lang={lang} label={d.header.home}>
+            {logo}
+          </HomeLink>
+        </Suspense>
         <Suspense fallback={<span>PL · UA · EN</span>}>
           <LanguageSwitcher lang={lang} />
         </Suspense>

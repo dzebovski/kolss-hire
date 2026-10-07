@@ -5,6 +5,7 @@ const salary = `${VACANCY.salary.amount} ${VACANCY.salary.currency}`;
 const workAddress = `Шоурум KOLSS, ${VACANCY.shortAddress}`;
 
 const uk = {
+  header: { home: "KOLSS — на початок вакансії" },
   metadata: {
     title: "Консультант / консультантка з продажу меблів — KOLSS Legionowo",
     description: `Робота в салоні KOLSS у Legionowo: розмови з клієнтами, зустрічі в салоні й супровід продажу до договору. ${salary} brutto + премії.`,
@@ -137,12 +138,15 @@ const uk = {
     customize: "Налаштування",
     privacy: "Політика приватності",
     settings: "Налаштування cookie",
-    settingsLead: "Оберіть, на які файли cookie ви погоджуєтеся. Змінити вибір можна будь-коли у футері сторінки.",
+    settingsLead:
+      "Оберіть, на які файли cookie ви погоджуєтеся. Змінити вибір можна будь-коли у футері сторінки.",
     necessaryTitle: "Необхідні",
-    necessaryText: "Запам’ятовують ваш вибір і захищають форму від ботів. Вимкнути їх не можна.",
+    necessaryText:
+      "Запам’ятовують ваш вибір і захищають форму від ботів. Вимкнути їх не можна.",
     alwaysOn: "Завжди активні",
     marketingTitle: "Маркетингові",
-    marketingText: "Meta Pixel і Conversions API — вимірювання ефективності наших оголошень про роботу. Без згоди ми нічого не надсилаємо до Meta.",
+    marketingText:
+      "Meta Pixel і Conversions API — вимірювання ефективності наших оголошень про роботу. Без згоди ми нічого не надсилаємо до Meta.",
     save: "Зберегти вибір",
     acceptAll: "Прийняти всі",
     close: "Закрити",
