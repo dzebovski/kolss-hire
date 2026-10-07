@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KOLSS Hire
 
-## Getting Started
+Landing page for the KOLSS Legionowo furniture sales vacancy, in Polish, Ukrainian and English. Next.js 16.4, React 19.3, TypeScript, Tailwind 4. Applications are delivered only to the private HR Slack channel.
 
-First, run the development server:
+## Local development
 
-```bash
+```sh
+npm ci
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `/uk`, `/pl` or `/en`. Without Slack configuration, submitting returns 503 and preserves the form. Empty Pixel ID disables tracking. Never use the CRM Slack token.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+npm run lint
+npx tsc --noEmit
+npm test
+npm run build
+```
 
-## Learn More
+`npm run check:content` rejects unresolved HR placeholders. The production prebuild runs it when `VERCEL_ENV=production`; previews remain available. Next fonts require network access during a clean build.
 
-To learn more about Next.js, take a look at the following resources:
+## Release requirements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Fill server/public environment variables described in `.env.example`, replace all HR notices, configure BotID and WAF rate limiting for `POST /api/apply`, and verify Slack delivery plus consent and event deduplication in Meta Test Events. CV files are limited to 4,000,000 bytes; larger CVs must be linked. The complete validation record and remaining checks are in [docs/04-verification.md](docs/04-verification.md).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No deployment or push is performed by this implementation.
