@@ -1,7 +1,7 @@
-import { VACANCY } from "../../vacancy";
+import { COMPANY } from "../../company";
 import type { PrivacyContent } from "./types";
 
-const { email } = VACANCY.contact;
+const { email } = COMPANY.contact;
 
 const privacy: PrivacyContent = {
   title: "Polityka prywatności",
@@ -21,7 +21,7 @@ const privacy: PrivacyContent = {
       id: "administrator",
       title: "Administrator danych",
       blocks: [
-        `Administratorem Twoich danych osobowych jest ${VACANCY.employer} z siedzibą w Legionowie, ${VACANCY.address}, wpisana do rejestru przedsiębiorców KRS pod numerem 0001207180, NIP 536-199-62-94, REGON 543320017.`,
+        `Administratorem Twoich danych osobowych jest ${COMPANY.employer} z siedzibą w Legionowie, ${COMPANY.address}, wpisana do rejestru przedsiębiorców KRS pod numerem 0001207180, NIP 536-199-62-94, REGON 543320017.`,
         "W sprawach dotyczących danych osobowych skontaktuj się z nami. Nie wyznaczyliśmy inspektora ochrony danych.",
         { contact: true },
       ],
@@ -49,7 +49,7 @@ const privacy: PrivacyContent = {
       blocks: [
         {
           list: [
-            "Rekrutacja na stanowisko doradcy / doradczyni klienta w salonie — art. 6 ust. 1 lit. b RODO (działania przed zawarciem umowy na Twoje żądanie) w związku z art. 22¹ Kodeksu pracy.",
+            "Rekrutacja na stanowisko, na które aplikujesz — art. 6 ust. 1 lit. b RODO (działania przed zawarciem umowy na Twoje żądanie) w związku z art. 22¹ Kodeksu pracy.",
             "Dane, które podajesz z własnej inicjatywy, np. w CV lub komentarzu — Twoja zgoda, art. 6 ust. 1 lit. a RODO w związku z art. 22¹a Kodeksu pracy. Zgodę wyrażasz, zaznaczając pole zgody w formularzu; bez niej nie można wysłać zgłoszenia.",
             "Ochrona formularza przed spamem i nadużyciami oraz ustalenie, skąd trafiło zgłoszenie — nasz prawnie uzasadniony interes, art. 6 ust. 1 lit. f RODO.",
             "Pomiar skuteczności ogłoszeń w Meta — wyłącznie za Twoją zgodą, art. 6 ust. 1 lit. a RODO i art. 399 Prawa komunikacji elektronicznej.",

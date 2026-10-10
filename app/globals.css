@@ -1244,3 +1244,127 @@ p {
     padding: 128px 40px;
   }
 }
+
+.jobs {
+  padding-bottom: 64px;
+}
+.job-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d8d3c8;
+}
+.job-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 0;
+  border-top: 1px solid #d8d3c8;
+}
+.job-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+}
+.job-link {
+  text-decoration: none;
+}
+.job-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.job-card:hover .job-link,
+.job-link:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+.job-card:hover .job-more {
+  text-decoration-color: #1e2421;
+}
+.job-card:has(.job-link:focus-visible) {
+  outline: 2px solid #1e2421;
+  outline-offset: 4px;
+}
+.job-link:focus-visible {
+  outline: none;
+}
+.job-facts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.job-facts div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.job-facts dd {
+  margin: 0;
+  font-size: 18px;
+  line-height: 26px;
+}
+.job-more {
+  align-self: flex-start;
+  justify-content: flex-start;
+}
+.about-text {
+  max-width: 68ch;
+  gap: 20px;
+}
+@media (min-width: 900px) {
+  .jobs {
+    padding-bottom: 96px;
+  }
+  .job-card {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    padding: 48px 0;
+  }
+  .job-card > .k-eyebrow {
+    grid-column: 1 / span 4;
+  }
+  .job-body {
+    grid-column: 6 / span 7;
+  }
+  .job-facts {
+    flex-direction: row;
+    gap: 40px;
+  }
+  .job-facts div {
+    flex: 1;
+  }
+  .job-facts div:first-child {
+    flex: 1.4;
+  }
+}
+.k-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.k-navlink {
+  display: none;
+  align-items: center;
+  min-height: 44px;
+  color: #5c625e;
+  text-decoration: none;
+}
+.k-navlink:hover {
+  color: #1e2421;
+}
+.k-back {
+  align-self: flex-start;
+  justify-content: flex-start;
+  margin-bottom: -8px;
+}
+@media (min-width: 600px) {
+  .k-navlink {
+    display: inline-flex;
+  }
+}

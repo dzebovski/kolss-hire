@@ -1,115 +1,44 @@
-import { VACANCY } from "../../vacancy";
+import { COMPANY } from "../../company";
 import privacy from "../legal/pl";
 import type { Dictionary } from "../types";
 
-const salary = `${VACANCY.salary.amount} ${VACANCY.salary.currency}`;
-const workAddress = `Salon KOLSS, ${VACANCY.shortAddress}`;
-
 const pl = {
-  header: { home: "KOLSS — strona główna oferty" },
-  metadata: {
-    title: "Doradca / Doradczyni klienta w salonie meblowym — KOLSS Legionowo",
-    description: `Praca w salonie KOLSS w Legionowie: rozmowy z klientami, spotkania w salonie i prowadzenie sprzedaży do umowy. ${salary} brutto + premie.`,
+  header: { home: "KOLSS — oferty pracy" },
+  jobs: {
+    metadata: {
+      title: "Oferty pracy — KOLSS Legionowo",
+      description: "Aktualne oferty pracy w KOLSS Polska w Legionowie: sprzedaż i projektowanie mebli kuchennych na wymiar.",
+    },
+    eyebrow: "Praca w KOLSS · Legionowo",
+    title: "Oferty pracy",
+    lead: "Produkujemy kuchnie i meble na wymiar. Szukamy osób, które poprowadzą klienta od pierwszej rozmowy do gotowego projektu.",
+    listLabel: "Aktualne oferty",
+    open: "Zobacz ofertę",
+    nav: "Oferty pracy",
   },
-  hero: {
-    eyebrow: `Oferta pracy · ${VACANCY.shortLocation}`,
-    title: "Doradca / Doradczyni klienta w salonie meblowym",
-    role: "Doradca / Doradczyni klienta w salonie meblowym",
-    lead: "Pomagasz klientom wybrać kuchnię lub meble do domu. Projekty przygotowują nasi projektanci, a Ty prowadzisz klienta i sprzedaż.",
-    payLabel: "Wynagrodzenie",
-    pay: `${salary} brutto / mies. + premie`,
-    hoursLabel: "Etat",
-    hours: `Pełny etat, ${VACANCY.workingDays} dni, ${VACANCY.weeklyHours} godzin tygodniowo`,
-    locationLabel: "Miejsce",
-    location: workAddress,
-    cta: "Wyślij CV",
-    mobileCta: "Wyślij CV",
-    terms: "Zobacz warunki",
-  },
-  duties: {
-    title: "Zakres obowiązków",
-    items: [
-      "Doradztwo klientom w salonie i telefonicznie w zakresie kuchni i mebli na wymiar.",
-      "Obsługa zapytań przychodzących i rozpoznawanie potrzeb klienta.",
-      "Prezentacja produktów, materiałów i rozwiązań KOLSS.",
-      "Prowadzenie procesu sprzedaży — od pierwszego kontaktu do podpisania umowy.",
-      "Współpraca z projektantami i opieka nad klientem na wszystkich etapach zamówienia.",
-      "Prowadzenie bazy klientów i historii kontaktów w CRM.",
-    ],
-    note: "Projektowanie techniczne nie należy do obowiązków — zajmują się nim nasi projektanci.",
-  },
-  requirements: {
-    title: "Wymagania",
-    items: [
-      "Doświadczenie w sprzedaży lub obsłudze klienta.",
-      "Wysokie umiejętności komunikacyjne, negocjacyjne i prezentacyjne.",
-      "Nastawienie na wynik i odpowiedzialność za ustalenia.",
-      "Dobra organizacja pracy i samodzielność w obsłudze wielu klientów jednocześnie.",
-      "Sprawna obsługa komputera, poczty e-mail i systemów CRM.",
-    ],
-    languageTitle: "Język",
-    language: "Biegła znajomość języka polskiego",
-    languageNote: "Znajomość języka angielskiego będzie atutem",
-    advantageTitle: "Mile widziane",
-    advantage:
-      "Doświadczenie w branży meblowej, kuchennej lub wnętrzarskiej. Znajomość programów do projektowania nie jest wymagana.",
-  },
-  terms: {
-    title: "Warunki",
-    pay: `${salary} brutto / mies.`,
-    subtitle: "stała podstawa wynagrodzenia + premia za wyniki",
-    rows: [
-      {
-        label: "Rodzaj umowy",
-        value: `${VACANCY.contractNames.employment}, ${VACANCY.contractNames.mandate} lub kontrakt ${VACANCY.contractNames.b2b} — do uzgodnienia`,
-      },
-      {
-        label: "System wynagrodzeń",
-        value: "stała podstawa + premia za wyniki",
-      },
-      { label: "Tryb wypłaty", value: "miesięczny" },
-      {
-        label: "Wymiar pracy",
-        value: `pełny etat, ${VACANCY.weeklyHours} godzin tygodniowo`,
-      },
-      {
-        label: "Dni pracy",
-        value:
-          "poniedziałek–piątek; sobota według grafiku, w zamian wolny dzień w tygodniu",
-      },
-      { label: "Godziny pracy", value: `elastyczny grafik, ${VACANCY.hours}` },
-      {
-        label: "Tryb pracy",
-        value:
-          "praca stacjonarna w showroomie; po wdrożeniu możliwy jeden dzień pracy zdalnej w tygodniu po uzgodnieniu",
-      },
-    ],
-    note: "Premie zależą od wyników i nie są gwarantowane. Kwoty brutto podajemy przed potrąceniem składek i podatku.",
-    offerTitle: "To oferujemy",
-    offers: [
-      "Stabilne zatrudnienie w firmie z własną produkcją mebli.",
-      "Przejrzysty system premiowy zależny od wyników.",
-      "Szkolenia produktowe, sprzedażowe i z obsługi CRM.",
-      "Wsparcie doświadczonego zespołu projektantów.",
-      "Możliwości rozwoju — także nauka projektowania dla chętnych.",
+  about: {
+    eyebrow: "KOLSS Polska",
+    title: "O nas",
+    paragraphs: [
+      "KOLSS POLSKA to firma z siedzibą w Legionowie, specjalizująca się w produkcji mebli kuchennych.",
+      "Od ponad 25 lat łączymy doświadczenie i rzemiosło z nowoczesnymi europejskimi technologiami. Produkujemy m.in. fronty z naturalnego drewna, fronty fornirowane oraz fronty z MDF, realizując projekty dopasowane do różnorodnych potrzeb i stylów wnętrz.",
+      "Stawiamy na precyzję wykonania, trwałość, estetykę oraz odpowiedzialne podejście do produkcji.",
+      "Jeżeli chcesz rozwijać swoje umiejętności, tworzyć indywidualne projekty i mieć wpływ na ich realizację — dołącz do naszego zespołu.",
     ],
   },
   form: {
-    title: "Poznajmy się. Wyślij CV.",
-    lead: "Zostaw kontakt i dodaj CV jako plik lub link.",
-    steps: ["Rozmowa z HR", "Spotkanie z właścicielami KOLSS"],
     name: "Imię",
     phone: "Telefon",
     email: "E-mail",
     file: "Dodaj plik CV",
-    fileHint: `PDF, DOC lub DOCX, maks. ${VACANCY.cvMaxSizeMb} MB`,
+    fileHint: `PDF, DOC lub DOCX, maks. ${COMPANY.cvMaxSizeMb} MB`,
     removeFile: "Usuń plik",
     or: "lub",
     cvUrl: "Link do CV",
     cvHint:
       "Wystarczy jeden sposób. Jeśli wysyłasz link, sprawdź, czy dokument jest dostępny do podglądu.",
+    portfolio: "Link do portfolio (opcjonalnie)",
     comment: "Komentarz (opcjonalnie)",
-    commentPlaceholder: "Kilka zdań o Twoim doświadczeniu w pracy z klientami",
     submit: "Wyślij zgłoszenie",
     sending: "Wysyłanie…",
     rodo: "Administratorem danych jest KOLSS Polska Sp. z o.o. Przetwarzamy je wyłącznie w celu tej rekrutacji i usuwamy po jej zakończeniu. Zgodę możesz wycofać w każdej chwili.",
@@ -124,9 +53,10 @@ const pl = {
       cvMissing: "Dodaj plik CV lub wklej link.",
       rodoConsent: "Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie.",
       fileType: "Dodaj plik PDF, DOC lub DOCX.",
-      fileSize: `Plik jest za duży — maksymalnie ${VACANCY.cvMaxSizeMb} MB.`,
+      fileSize: `Plik jest za duży — maksymalnie ${COMPANY.cvMaxSizeMb} MB.`,
       cvUrl: "Wklej pełny link zaczynający się od https://.",
-      comment: `Komentarz może mieć maksymalnie ${VACANCY.commentMaxLength} znaków.`,
+      portfolioUrl: "Wklej pełny link zaczynający się od https://.",
+      comment: `Komentarz może mieć maksymalnie ${COMPANY.commentMaxLength} znaków.`,
       server:
         "Nie udało się wysłać zgłoszenia. Twoje dane zostały w formularzu — spróbuj ponownie.",
       rateLimit: "Zbyt wiele prób. Spróbuj ponownie za kilka minut.",
@@ -135,7 +65,7 @@ const pl = {
   thanks: {
     title: "Dziękujemy! Zgłoszenie dotarło.",
     text: "HR skontaktuje się z Tobą, jeśli Twoje doświadczenie odpowiada tej roli.",
-    back: "Wróć do oferty",
+    back: "Wróć do ofert pracy",
   },
   cookies: {
     text: "Używamy niezbędnych plików cookie, aby strona działała. Za Twoją zgodą korzystamy też z Meta Pixel, aby mierzyć skuteczność naszych ogłoszeń.",
@@ -158,7 +88,7 @@ const pl = {
     close: "Zamknij",
   },
   footer: {
-    company: `${VACANCY.employer}, ${VACANCY.address} · ${VACANCY.registry}`,
+    company: `${COMPANY.employer}, ${COMPANY.address} · ${COMPANY.registry}`,
     privacy: "Polityka prywatności",
     cookies: "Ustawienia cookies",
     contact: "Kontakt",

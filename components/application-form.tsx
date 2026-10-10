@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { Locale } from "@/lib/i18n/locales";
+import type { VacancyContent } from "@/lib/i18n/vacancies/types";
+import type { VacancyId } from "@/lib/vacancies";
 import { validateApplicationFields, MAX_CV_BYTES } from "@/lib/apply/schema";
 import { cvKindFromName } from "@/lib/apply/file";
 import {
@@ -22,10 +24,12 @@ const utmKeys = [
 ] as const;
 export function ApplicationForm({
   lang,
+  vacancy,
   text,
 }: {
   lang: Locale;
-  text: Dictionary["form"];
+  vacancy: VacancyId;
+  text: Dictionary["form"] & VacancyContent["form"];
 }) {
   const form = useRef<HTMLFormElement>(null);
   const summary = useRef<HTMLDivElement>(null);
@@ -44,7 +48,7 @@ export function ApplicationForm({
   }, []);
   function dataForForm() {
     const data = new FormData(form.current!);
-    data.set("vacancy", "sales-consultant-legionowo");
+    data.set("vacancy", vacancy);
     data.set("lang", lang);
     data.set("renderedAt", String(renderedAt.current));
     data.set("consent", consent === "granted" ? "granted" : "denied");
@@ -171,6 +175,7 @@ export function ApplicationForm({
     email: text.email,
     cvFile: "CV",
     cvUrl: text.cvUrl,
+    portfolioUrl: text.portfolio,
     comment: text.comment,
     rodoConsent: text.rodoConsentShort,
   };
@@ -275,6 +280,23 @@ export function ApplicationForm({
             {text.cvHint}
           </p>
         </fieldset>
+        {text.portfolioField && (
+          <div className="field">
+            <label htmlFor="f-portfolioUrl">{text.portfolio}</label>
+            <input
+              id="f-portfolioUrl"
+              name="portfolioUrl"
+              type="url"
+              inputMode="url"
+              placeholder="https://"
+              maxLength={500}
+              aria-invalid={Boolean(errors.portfolioUrl)}
+              aria-describedby={described("portfolioUrl")}
+              onBlur={() => validateBlur("portfolioUrl")}
+            />
+            {error("portfolioUrl")}
+          </div>
+        )}
         <div className="field">
           <label htmlFor="f-comment">{text.comment}</label>
           <textarea

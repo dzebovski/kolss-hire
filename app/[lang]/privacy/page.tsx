@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import type { LegalBlock, PrivacyContent } from "@/lib/i18n/legal/types";
-import { VACANCY } from "@/lib/vacancy";
+import { COMPANY } from "@/lib/company";
 import { Header, Footer } from "@/components/chrome";
 import { CookieSettingsButton } from "@/components/consent";
 export async function generateMetadata(): Promise<Metadata> {
@@ -101,17 +101,17 @@ function Block({ block, p }: { block: LegalBlock; p: PrivacyContent }) {
       <dl className="legal-contact k-body">
         <dt>{p.contactLabels.email}</dt>
         <dd>
-          <a href={`mailto:${VACANCY.contact.email}`}>
-            {VACANCY.contact.email}
+          <a href={`mailto:${COMPANY.contact.email}`}>
+            {COMPANY.contact.email}
           </a>
         </dd>
         <dt>{p.contactLabels.phone}</dt>
         <dd>
-          <a href={VACANCY.contact.phoneHref}>{VACANCY.contact.phone}</a>
+          <a href={COMPANY.contact.phoneHref}>{COMPANY.contact.phone}</a>
         </dd>
         <dt>{p.contactLabels.address}</dt>
         <dd>
-          {VACANCY.employer}, {VACANCY.address}
+          {COMPANY.employer}, {COMPANY.address}
         </dd>
       </dl>
     );

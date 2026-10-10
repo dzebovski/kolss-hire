@@ -1,5 +1,6 @@
 import type { ApplicationFields } from "./schema";
 import { safeFilename } from "./file";
+import { vacancyById } from "../vacancies";
 
 const escapeMrkdwn = (value: string) =>
   value
@@ -33,11 +34,14 @@ export function buildSlackApplication(
     hour12: false,
   }).format(new Date());
   return [
-    "*New application · Doradca / Doradczyni klienta — Legionowo*",
+    `*New application · ${vacancyById(fields.vacancy).titlePl} — Legionowo*`,
     `*Name:* ${escapeMrkdwn(fields.name)}`,
     `*Phone:* <tel:${fields.phone.replace(/[^\d+]/g, "")}|${escapeMrkdwn(fields.phone)}>`,
     `*Email:* <mailto:${encodeURIComponent(fields.email)}|${escapeMrkdwn(fields.email)}>`,
     `*CV:* ${cv}`,
+    ...(fields.portfolioUrl
+      ? [`*Portfolio:* ${escapeMrkdwn(fields.portfolioUrl)}`]
+      : []),
     `*Comment:* ${escapeMrkdwn(fields.comment) || "—"}`,
     "*RODO consent:* yes — ticked by the candidate in the form on submission",
     `*Page language:* ${fields.lang} · *Source:* ${escapeMrkdwn(source)}${fields.fbclid ? " · Meta ad click" : ""}`,

@@ -1,6 +1,17 @@
 import { z } from "zod";
+import { vacancyIds } from "../vacancies";
 
 export const MAX_CV_BYTES = 4_000_000;
+
+const optionalUrl = z.union([
+  z.literal(""),
+  z
+    .string()
+    .trim()
+    .max(500)
+    .url()
+    .refine((value) => /^https?:\/\//i.test(value)),
+]);
 
 export const applicationSchema = z
   .object({
@@ -13,15 +24,8 @@ export const applicationSchema = z
       .regex(/^[\d\s+()\-]+$/)
       .refine((value) => (value.match(/\d/g) ?? []).length >= 9),
     email: z.string().trim().email().max(254),
-    cvUrl: z.union([
-      z.literal(""),
-      z
-        .string()
-        .trim()
-        .max(500)
-        .url()
-        .refine((value) => /^https?:\/\//i.test(value)),
-    ]),
+    cvUrl: optionalUrl,
+    portfolioUrl: optionalUrl.default(""),
     cvFile: z
       .custom<File>(
         (value) => typeof File !== "undefined" && value instanceof File,
@@ -29,7 +33,7 @@ export const applicationSchema = z
       .optional(),
     comment: z.string().max(1000),
     rodoConsent: z.literal("yes"),
-    vacancy: z.literal("sales-consultant-legionowo"),
+    vacancy: z.enum(vacancyIds),
     lang: z.enum(["pl", "uk", "en"]),
     utm_source: z.string().max(200),
     utm_medium: z.string().max(200),

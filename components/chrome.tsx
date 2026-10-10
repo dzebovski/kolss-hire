@@ -5,7 +5,7 @@ import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { LanguageSwitcher } from "./language-switcher";
 import { CookieSettingsButton } from "./consent";
 import type { Locale } from "@/lib/i18n/locales";
-import { VACANCY } from "@/lib/vacancy";
+import { COMPANY } from "@/lib/company";
 import type { Dictionary } from "@/lib/i18n/dictionaries/uk";
 export async function Header({ lang }: { lang: Locale }) {
   const d = await getDictionary();
@@ -38,9 +38,14 @@ export async function Header({ lang }: { lang: Locale }) {
             {logo}
           </HomeLink>
         </Suspense>
-        <Suspense fallback={<span>PL · UA · EN</span>}>
-          <LanguageSwitcher lang={lang} />
-        </Suspense>
+        <div className="k-header-nav">
+          <a className="k-navlink k-eyebrow" href={`/${lang}`}>
+            {d.jobs.nav}
+          </a>
+          <Suspense fallback={<span>PL · UA · EN</span>}>
+            <LanguageSwitcher lang={lang} />
+          </Suspense>
+        </div>
       </header>
     </div>
   );
@@ -58,20 +63,20 @@ export function Footer({
       <div className="k-footer">
         <div className="k-small company">
           <p lang="pl">
-            {VACANCY.employer}, {VACANCY.address},
+            {COMPANY.employer}, {COMPANY.address},
             <br />
             KRS 0001207180, NIP 536-199-62-94, REGON 543320017,
             <br />
             Sąd Rejonowy dla m.st. Warszawy w Warszawie, XIV Wydział Gospodarczy
-            KRS, kapitał zakładowy {VACANCY.shareCapital}
+            KRS, kapitał zakładowy {COMPANY.shareCapital}
           </p>
           <p>
             {text.contact}:{" "}
-            <a href={`mailto:${VACANCY.contact.email}`}>
-              {VACANCY.contact.email}
+            <a href={`mailto:${COMPANY.contact.email}`}>
+              {COMPANY.contact.email}
             </a>
             {" · "}
-            <a href={VACANCY.contact.phoneHref}>{VACANCY.contact.phone}</a>
+            <a href={COMPANY.contact.phoneHref}>{COMPANY.contact.phone}</a>
           </p>
         </div>
         <nav className="k-footlinks k-small" aria-label="Footer">

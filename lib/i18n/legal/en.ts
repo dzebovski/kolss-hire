@@ -1,7 +1,7 @@
-import { VACANCY } from "../../vacancy";
+import { COMPANY } from "../../company";
 import type { PrivacyContent } from "./types";
 
-const { email } = VACANCY.contact;
+const { email } = COMPANY.contact;
 
 const privacy: PrivacyContent = {
   title: "Privacy policy",
@@ -23,7 +23,7 @@ const privacy: PrivacyContent = {
       id: "administrator",
       title: "Data controller",
       blocks: [
-        `The controller of your personal data is ${VACANCY.employer}, ${VACANCY.address}, Poland, entered in the Polish National Court Register (KRS) under no. 0001207180, NIP 536-199-62-94, REGON 543320017.`,
+        `The controller of your personal data is ${COMPANY.employer}, ${COMPANY.address}, Poland, entered in the Polish National Court Register (KRS) under no. 0001207180, NIP 536-199-62-94, REGON 543320017.`,
         "Contact us with any questions about your personal data. We have not appointed a data protection officer.",
         { contact: true },
       ],
@@ -51,7 +51,7 @@ const privacy: PrivacyContent = {
       blocks: [
         {
           list: [
-            "Recruitment for the showroom sales consultant role — Art. 6(1)(b) GDPR (steps taken at your request before entering into a contract) in conjunction with Art. 22¹ of the Polish Labour Code.",
+            "Recruitment for the role you apply for — Art. 6(1)(b) GDPR (steps taken at your request before entering into a contract) in conjunction with Art. 22¹ of the Polish Labour Code.",
             "Data you provide on your own initiative, e.g. in your CV or comment — your consent, Art. 6(1)(a) GDPR in conjunction with Art. 22¹a of the Labour Code. You give consent by ticking the consent box in the form; the application cannot be sent without it.",
             "Protecting the form against spam and abuse, and identifying where an application came from — our legitimate interest, Art. 6(1)(f) GDPR.",
             "Measuring the performance of our Meta ads — only with your consent, Art. 6(1)(a) GDPR and Art. 399 of the Polish Electronic Communications Law.",

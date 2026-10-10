@@ -5,6 +5,7 @@ import { isValidCv } from "@/lib/apply/file";
 import { sendMetaConversion } from "@/lib/apply/meta-capi";
 import { sendApplicationToSlack } from "@/lib/apply/slack";
 import { validateApplicationFields } from "@/lib/apply/schema";
+import { vacancyById } from "@/lib/vacancies";
 
 // Node.js is the default; an explicit runtime export is incompatible with Cache Components.
 const MAX_REQUEST_BYTES = 4_400_000;
@@ -83,6 +84,7 @@ export async function POST(request: Request) {
       "phone",
       "email",
       "cvUrl",
+      "portfolioUrl",
       "comment",
       "rodoConsent",
       "vacancy",
@@ -161,7 +163,10 @@ export async function POST(request: Request) {
   const eventId = randomUUID();
   if (fields.consent === "granted" && process.env.META_CAPI_ACCESS_TOKEN) {
     const origin = process.env.NEXT_PUBLIC_SITE_URL || "https://prace.kolss.eu";
-    const sourceUrl = new URL(`/${fields.lang}#form`, origin).toString();
+    const sourceUrl = new URL(
+      `/${fields.lang}/${vacancyById(fields.vacancy).slug}#form`,
+      origin,
+    ).toString();
     const fbpCookie = request.headers
       .get("cookie")
       ?.match(/(?:^|;\s*)_fbp=([^;]+)/)?.[1];

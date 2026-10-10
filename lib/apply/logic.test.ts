@@ -8,12 +8,19 @@ import {
 import { buildFbc, normalizeEmail, normalizePhone, sha256 } from "./meta-capi";
 import { applicationSchema, type ApplicationFields } from "./schema";
 import { buildSlackApplication } from "./slack";
+import {
+  VACANCIES,
+  salaryAmount,
+  salaryLabel,
+  vacancyBySlug,
+} from "../vacancies";
 
 const validFields: ApplicationFields = {
   name: "Anna Kowalska",
   phone: "+48 600 000 000",
   email: "anna@example.com",
   cvUrl: "",
+  portfolioUrl: "",
   comment: "",
   rodoConsent: "yes",
   vacancy: "sales-consultant-legionowo",
@@ -162,5 +169,51 @@ describe("tracking and Slack formatting", () => {
     expect(text).toContain("A &lt;B &amp; C&gt;");
     expect(text).toContain("&lt;script&gt;");
     expect(text).toContain("<mailto:anna%40example.com|");
+  });
+});
+
+describe("vacancies", () => {
+  const linked = { ...validFields, cvUrl: "https://example.com/cv" };
+
+  it("accepts only known vacancies and names them in Slack", () => {
+    expect(
+      applicationSchema.safeParse({ ...linked, vacancy: "unknown" }).success,
+    ).toBe(false);
+    const designer = { ...linked, vacancy: "kitchen-designer-legionowo" as const };
+    expect(applicationSchema.safeParse(designer).success).toBe(true);
+    expect(buildSlackApplication(designer)).toContain(
+      "*New application · Sprzedawca / Sprzedawczyni mebli kuchennych – Projektant / Projektantka — Legionowo*",
+    );
+    expect(buildSlackApplication(linked)).toContain(
+      "*New application · Doradca / Doradczyni klienta w salonie meblowym — Legionowo*",
+    );
+  });
+
+  it("validates the optional portfolio link and shows it in Slack", () => {
+    const withoutPortfolio: Partial<ApplicationFields> = { ...linked };
+    delete withoutPortfolio.portfolioUrl;
+    expect(applicationSchema.safeParse(withoutPortfolio).success).toBe(true);
+    expect(
+      applicationSchema.safeParse({ ...linked, portfolioUrl: "portfolio" })
+        .success,
+    ).toBe(false);
+    const text = buildSlackApplication({
+      ...linked,
+      portfolioUrl: "https://example.com/<work>",
+    });
+    expect(text).toContain("*Portfolio:* https://example.com/&lt;work&gt;");
+    expect(buildSlackApplication(linked)).not.toContain("*Portfolio:*");
+  });
+
+  it("formats salary amounts per locale", () => {
+    expect(salaryLabel({ min: 5000 }, "pl")).toBe("5 000 zł");
+    expect(salaryLabel({ min: 5500, max: 8000 }, "uk")).toBe("5 500–8 000 zł");
+    expect(salaryLabel({ min: 5500, max: 8000 }, "en")).toBe(
+      "5,500–8,000 PLN",
+    );
+    expect(salaryAmount({ min: 5500, max: 8000 })).toBe("5 500–8 000");
+    expect(VACANCIES.every((vacancy) => vacancyBySlug(vacancy.slug))).toBe(
+      true,
+    );
   });
 });
